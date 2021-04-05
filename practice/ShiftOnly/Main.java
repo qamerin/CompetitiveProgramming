@@ -1,22 +1,33 @@
 package ShiftOnly;
+import java.util.*;
 
-import java.util.Scanner;
-
-public class Main {
-   public static void main(String[] args) {
+class Main {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int i = sc.nextInt();
-        int j[] = new int[i];
+        int  x = Integer.parseInt(sc.nextLine()); 
+        String y = sc.nextLine(); 
+        String[] data= y.split(" ",0);
 
-        for(int k = 0; k< j.length;k++){
-            j[k] = sc.nextInt();
+        int[] intData = new int[x];
+        for(int j=0;j<x;j++){
+            intData[j] =Integer.parseInt(data[j]);
         }
+        boolean check = false;
 
-        for(int sum=0;;sum++){
-            for(int l=0;l<i;l++){
-                if(j[l]%2>0){System.out.println(sum);return;}
-                j[l]/=2;
+        int cnt=0;
+        while(true){
+            for(int k=0;k<intData.length;k++){
+                if(intData[k]%2==1){
+                    check = true;
+                }
             }
+            if(check) break;
+            for(int l=0;l<intData.length;l++){
+                intData[l] = intData[l]/2;
+            }
+            cnt++;
         }
-   } 
+
+        System.out.println(cnt);
+    }
 }
